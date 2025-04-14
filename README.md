@@ -60,6 +60,12 @@ cuyo sector no sea "Cigarette Retail Dealer - 127"?>>
 db.inspections.countDocuments({ date: { $in: ["Feb 20 2015", "Feb 21 2015"] }, sector: { $ne: "Cigarette Retail Dealer - 127" } })
 ```
 
+o usando `$or` para las fechas
+
+```
+db.inspections.countDocuments({ $or: [{ date: "Feb 20 2015" }, { date: "Feb 21 2015" }], sector: { $ne: "Cigarette Retail Dealer - 127" } })
+```
+
 **Output**: 204
 
 
@@ -67,9 +73,9 @@ db.inspections.countDocuments({ date: { $in: ["Feb 20 2015", "Feb 21 2015"] }, s
 
 `show dbs` : mostrar DB's
 
-`show collections`: mostrar colecciones
-
 `use <db_name>` : acceder a una DB especifica
+
+`show collections`: mostrar colecciones de la DB actual
 
 `db.<collection_name>.find().limit(1)` : consultar 1 solo documento (util para ver su schema)
 
